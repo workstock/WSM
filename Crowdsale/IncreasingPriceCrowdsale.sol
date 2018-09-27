@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "https://github.com/workstock/WSM/Crowdsale/TimedCrowdsale.sol"
+import "https://github.com/workstock/WSM/Crowdsale/TimedCrowdsale.sol";
 
 /**
  * @title IncreasingPriceCrowdsale
@@ -15,8 +15,7 @@ contract IncreasingPriceCrowdsale is TimedCrowdsale {
 
   /**
    * @dev Constructor, takes initial and final rates of tokens received per wei contributed.
-   * @param initialRate Number of tokens a buyer gets per wei at the start of the crowdsale
-   * @param finalRate Number of tokens a buyer gets per wei at the end of the crowdsale
+   * @param ratePoints Rate volumes of the crowdsale
    */
   constructor(uint256[] ratePoints) public {
     super._checkArray(ratePoints);
