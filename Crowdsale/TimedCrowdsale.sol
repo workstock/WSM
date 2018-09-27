@@ -9,10 +9,10 @@ import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/Saf
 contract TimedCrowdsale is Crowdsale {
   using SafeMath for uint256;
 
-  uint256 private _openingTime;
-  uint256 private _closingTime;
+  uint256 public _openingTime;
+  uint256 public _closingTime;
   
-  uint256[] private _timePoints;
+  uint256[] public _timePoints;
   
   function _checkArray(uint[] array) internal pure {
         for (uint8 i = 0; i<array.length-1; i++){
