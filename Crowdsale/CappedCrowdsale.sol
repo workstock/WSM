@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/crowdsale/Crowdsale.sol"
+import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/crowdsale/Crowdsale.sol";
 /**
  * @title CappedCrowdsale
  * @dev Crowdsale with a limit for total contributions.
@@ -9,21 +9,22 @@ contract CappedCrowdsale is Crowdsale {
   using SafeMath for uint256;
 
   uint256 private _hardcap;
-  uint256 private _softcap
+  uint256 private _softcap;
 
   /**
    * @dev Constructor, takes maximum amount of wei accepted in the crowdsale.
-   * @param cap Max amount of wei to be contributed
+   * @param hardcap Max amount of wei to be contributed
+   * @param softcap Min amount of wei to be contributed
    */
   constructor(uint256 softcap, uint256 hardcap) public {
-    require(cap > 0);
+    require(softcap > 0);
     require(softcap < hardcap);
     _softcap = softcap;
     _hardcap = hardcap;
   }
 
   /**
-   * @return the cap of the crowdsale.
+   * @return the caps of the crowdsale.
    */
   function softcap() public view returns(uint256) {
     return _softcap;
