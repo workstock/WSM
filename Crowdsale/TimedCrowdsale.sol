@@ -1,5 +1,5 @@
 pragma solidity ^0.4.24;
-import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/crowdsale/Crowdsale.sol"
+import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/crowdsale/Crowdsale.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 /**
@@ -12,7 +12,7 @@ contract TimedCrowdsale is Crowdsale {
   uint256 private _openingTime;
   uint256 private _closingTime;
   
-  uint32[] private _timePoints;
+  uint256[] private _timePoints;
   
   function _checkArray(uint[] array) internal pure {
         for (uint8 i = 0; i<array.length-1; i++){
@@ -30,12 +30,11 @@ contract TimedCrowdsale is Crowdsale {
 
   /**
    * @dev Constructor, takes crowdsale opening and closing times.
-   * @param openingTime Crowdsale opening time
-   * @param closingTime Crowdsale closing time
+   * @param timePoints Crowdsale time points
    */
-  constructor(uint32[] timePoints) public {
+  constructor(uint256[] timePoints) public {
     // solium-disable-next-line security/no-block-members
-    _checkArray(uint32[] timePoints)
+    _checkArray(timePoints);
     _timePoints = timePoints;
     _openingTime = _timePoints[0];
     _closingTime = _timePoints[_timePoints.length-1];
