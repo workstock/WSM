@@ -125,7 +125,7 @@ contract Crowdsale {
    * @param beneficiary Address performing the token purchase
    * @param weiAmount Value in wei involved in the purchase
    */
-  function _preValidatePurchase(address beneficiary, uint256 weiAmount) internal pure {
+  function _preValidatePurchase(address beneficiary, uint256 weiAmount) internal view {
     require(beneficiary != address(0));
     require(weiAmount != 0);
   }
